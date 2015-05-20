@@ -1,0 +1,17 @@
+<form action="/box/links/<%= @link.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <label>
+    Name
+    <input type="text" name="link[name]" value="<%= @link.name %>">
+  </label>
+
+  <label>
+    URL
+    <input type="text" name="link[url]" value="<%= @link.url %>">
+  </label>
+
+  <input type="submit">
+ </form>
+
+ <p><a href="/">back</a></p>

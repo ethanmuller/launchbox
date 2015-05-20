@@ -1,0 +1,10 @@
+<form action="/edit" method="post">
+  <% @box.links.each do |link| %>
+    <div>
+      <input type="text" name="boxlinks[<%= link.id  %>][name]" value="<%= link.name %>">
+      <input type="text" name="boxlinks[<%= link.id  %>][url]" value="<%= link.url %>">
+      <br />
+    </div>
+  <% end %>
+  <input type="submit">
+</form>

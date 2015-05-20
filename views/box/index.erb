@@ -1,0 +1,24 @@
+<h1>Showing box <%= @box.ip %></h1>
+
+<% if @box.links.any? %>
+  <ul>
+    <% @box.links.each do |link| %>
+      <li>
+
+        <a href="<%= link.url %>"><%= link.name %></a>
+
+        <a href="/box/links/<%= link.id %>">Edit</a>
+
+        <form method="post" action="/box/links/<%= link.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="destroy" >
+        </form>
+
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  No links added yet!
+<% end %>
+
+<a href="/box/links/create">Add Link</a>
