@@ -2,11 +2,18 @@
   width: 100%;
   float: left;
 
-  margin: 0.8em 0 ms(1);
+  margin: 0.8em 0 ms(2);
+
+
 }
 
 .l-logo {
   float: left;
+  margin-bottom: ms();
+
+  @media (min-width: $mq-split-header) {
+    margin-bottom: 0;
+  }
 }
 
 .l-title {
@@ -21,8 +28,8 @@
     margin-top: 0.3em;
   }
 
-  @media (min-width: $l-max-page-width) {
-    margin-top: 0.7em;
+  @media (min-width: $mq-grow-logo) {
+    margin-top: 1.4em;
   }
 }
 

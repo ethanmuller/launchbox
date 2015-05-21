@@ -29,6 +29,10 @@ get '/get-ip' do
   erb :'get-ip'
 end
 
+get '/what-is-this-even' do
+  erb :'description', :layout => :'layouts/naked'
+end
+
 get '/box/links/create' do
   @box = get_or_make_box
 

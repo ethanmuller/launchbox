@@ -1,4 +1,25 @@
 .main-logo {
+  display: block;
+}
+
+.main-logo--graphic {
+  // SVG element
+  display: inline-block;
+  vertical-align: middle;
+
+  margin-right: ms() * 0.5;
+
+  width: 32px;
+  height: 100%;
+  @media (min-width: $mq-grow-logo) {
+    width: 64px;
+    margin-right: ms();
+  }
+}
+
+.main-logo--text {
+  vertical-align: middle;
+
   font-weight: bold;
   text-transform: uppercase;
 
@@ -6,7 +27,7 @@
   line-height: 1;
   letter-spacing: 0.02em;
 
-  @media (min-width: $l-max-page-width) {
+  @media (min-width: $mq-grow-logo) {
     font-size: ms(2);
   }
 }

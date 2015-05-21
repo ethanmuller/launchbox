@@ -17,8 +17,9 @@ $l-page-gutter: $l-base-font-size;
 
 
 // media queries
-$mq-split-header: 30em;
+$mq-split-header: 34em;
 $mq-remove-box-cancel: 26.25em;
+$mq-grow-logo: $l-max-page-width;
 
 
 // vendor settings
@@ -27,4 +28,4 @@ $ms-ratio: $golden;
 
 
 // other
-$default-font-stack: Arial, Helvetica, sans-serif;
+$default-font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
