@@ -1,16 +1,18 @@
 // colors
-$c-bg: #FF793D;
-$c-bg--selected: lighten(#FF793D, 10%);
+$c-bg: #e1e1e1;
 $c-primary: #6B2607;
-$c-secondary: white;
-$c-tertiary: #C33D00;
+$c-secondary: #949494;
+
+// $c-bg: #3977B3;
+// $c-primary: white;
+// $c-secondary: rgba(white, 0.6);
 
 
 // lengths
 $l-max-page-width: 50em;
 $l-border: 6px;
 $l-border--sm: 2px;
-$l-base-font-size: 16px;
+$l-base-font-size: 18px;
 
 // should actually be ms(), but that's not defined yet
 $l-page-gutter: $l-base-font-size;
@@ -28,4 +30,5 @@ $ms-ratio: $golden;
 
 
 // other
+// Arial first. Just to piss off nerds.
 $default-font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;

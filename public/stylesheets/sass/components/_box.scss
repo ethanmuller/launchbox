@@ -27,7 +27,7 @@
 }
 
 .box__url {
-  color: $c-tertiary;
+  color: $c-secondary;
 }
 
 .box__link {
@@ -39,34 +39,27 @@
 
   // prevent border overlap
   margin-top: -($l-border);
-
-  &:focus,
-  &:hover {
-    // using transparentize or else the selected color is a little
-    // too much
-    background-color: transparentize($c-bg--selected, 0.75);
-  }
 }
 
 .box__controls {
   position: absolute;
   top: ($l-border * 2);
+  right: ($l-border * 2);
   bottom: $l-border;
-  right: $l-border;
 
   overflow: hidden;
 }
 
 .box__controls__inner {
-  transform: translate(100%, 0);
-  transition: transform 0.25s;
+  /* transform: translate(100%, 0); */
+  /* transition: transform 0.25s; */
 
-  .box__item:hover & {
-    transform: translate($l-border, 0);
+  /* .box__item:hover & { */
+    /* transform: translate(($l-border * 2), 0); */
 
-    // only delay when hovered
-    transition-delay: 0.25s;
-  }
+    /* // only delay when hovered */
+    /* transition-delay: 0.25s; */
+  /* } */
 }
 
 .box__control {

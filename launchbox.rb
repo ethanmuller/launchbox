@@ -21,6 +21,7 @@ end
 
 get '/' do
   @box = get_or_make_box
+  @box.links.order(created_at: :asc)
 
   erb :'box/index'
 end
@@ -30,7 +31,7 @@ get '/get-ip' do
 end
 
 get '/what-is-this-even' do
-  erb :'description', :layout => :'layouts/naked'
+  erb :'description', :layout => :'layout_naked'
 end
 
 get '/box/links/create' do

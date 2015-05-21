@@ -1,11 +1,21 @@
 // spacing classes, using the modular scale
 
 .sp {
-  margin-bottom: ms();
+  margin-bottom: ms() !important;
 }
 .sp--sm {
-  margin-bottom: ms() / $golden;
+  margin-bottom: ms() / $golden !important;
 }
 .sp--lg {
-  margin-bottom: ms(1);
+  margin-bottom: ms(1) !important;
+}
+.sp--xl {
+  margin-bottom: ms(2) !important;
+}
+.sp--xxl {
+  margin-bottom: ms(3) !important;
+}
+
+.sp--lg--top {
+  margin-top: ms(1) !important;
 }

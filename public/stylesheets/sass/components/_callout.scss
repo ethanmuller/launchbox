@@ -1,0 +1,9 @@
+.callout {
+  padding: ms();
+  border: $l-border solid $c-primary;
+}
+
+.callout--empty {
+  padding: ms();
+  border: $l-border solid $c-secondary;
+}

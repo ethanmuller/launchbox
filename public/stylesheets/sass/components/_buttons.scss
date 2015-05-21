@@ -4,7 +4,12 @@
 
   cursor: pointer;
 
-  font-size: ms();
+  font-size: 14px;
+
+  @media (min-width: 430px) {
+    font-size: ms();
+  }
+
   font-weight: bold;
 
   border-style: solid;
@@ -30,8 +35,8 @@
 
   &:focus,
   &:hover {
-    color: $c-secondary;
-    border-color: $c-secondary;
+    color: white;
+    background-color: darken($c-primary, 10%);
 
     outline: none;
   }
@@ -45,23 +50,40 @@
 
   &:focus,
   &:hover {
-    background-color: $c-bg--selected;
+    background-color: white;
 
     outline: none;
   }
 }
 
-.btn--subtle {
+.btn--secret {
   background-color: transparent;
-  color: $c-primary;
-
+  color: $c-secondary;
   border: $l-border solid transparent;
+
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+
+    bottom: 0.8em;
+
+    left: 1.3em;
+    right: 1.3em;
+
+    background-color: $c-secondary;
+    height: $l-border--sm;
+  }
 
   &:focus,
   &:hover {
-    border-color: $c-primary;
+    border-color: $c-secondary;
 
     outline: none;
+
+    &:before {
+      display: none;
+    }
   }
 }
 

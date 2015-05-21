@@ -8,13 +8,9 @@ ul, ol {
 }
 
 body {
-  background: $c-bg;
-  color: $c-primary;
-
   font-size: ms();
-  line-height: 1.3;
+  line-height: 1.6;
 
-  // Arial first. Just to piss off nerds.
   font-family: $default-font-stack;
 
   // Stylishness

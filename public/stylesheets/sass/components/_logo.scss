@@ -4,6 +4,11 @@
 
 .main-logo--graphic {
   // SVG element
+
+  path {
+    fill: $c-primary;
+  }
+
   display: inline-block;
   vertical-align: middle;
 
