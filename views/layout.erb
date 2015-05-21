@@ -3,8 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Launchbox</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  <link rel="stylesheet" href="/stylesheets/styles.css">
 </head>
 <body>
-  <%= yield %>
+
+  <div class="l-limit">
+    <div class="l-header">
+      <div class="l-logo">
+        <a href="/" class="main-logo">Launchbox</a>
+      </div>
+      
+      <div class="l-title">
+        <h1 class="box-title">Showing box for <%= @box.ip %></h1>
+      </div>
+    </div>
+    
+    <div class="l-main">
+      <%= yield %>
+    </div>
+  </div>
+
 </body>
 </html>

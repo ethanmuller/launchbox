@@ -1,0 +1,17 @@
+.btn {
+  display: block;
+  padding: 1em;
+
+  background-color: $c-primary;
+  color: $c-secondary;
+
+  /* font-size: 1.25em; */
+  font-weight: bold;
+
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btn--inline {
+  display: inline-block;
+}

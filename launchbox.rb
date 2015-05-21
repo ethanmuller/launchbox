@@ -30,6 +30,8 @@ get '/get-ip' do
 end
 
 get '/box/links/create' do
+  @box = get_or_make_box
+
   erb :'links/create'
 end
 

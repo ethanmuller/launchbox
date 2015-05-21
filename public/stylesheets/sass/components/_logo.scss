@@ -1,0 +1,12 @@
+.main-logo {
+  font-weight: bold;
+  text-transform: uppercase;
+
+  font-size: ms(1);
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  @media (min-width: $l-max-page-width) {
+    font-size: ms(2);
+  }
+}

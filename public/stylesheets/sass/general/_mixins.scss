@@ -1,0 +1,6 @@
+@mixin px-to-rem( $key, $val ) {
+  // take property and value in ems,
+  // output as rems with pixel fallback
+  #{$key}: strip-unit( $val );
+  #{$key}: ( strip-unit( $val ) / $l-base-font-size) * 1rem;
+}

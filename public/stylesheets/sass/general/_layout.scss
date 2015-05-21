@@ -1,0 +1,41 @@
+.l-header {
+  width: 100%;
+  float: left;
+
+  margin: 0.8em 0 ms(1);
+}
+
+.l-logo {
+  float: left;
+}
+
+.l-title {
+  float: left;
+  clear: both;
+
+  @media (min-width: $mq-split-header) {
+    float: right;
+    clear: none;
+
+    // magic number, related to logo size
+    margin-top: 0.3em;
+  }
+
+  @media (min-width: $l-max-page-width) {
+    margin-top: 0.7em;
+  }
+}
+
+.l-main {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
+.l-limit {
+  // limit page width
+  padding: 0 1em;
+  margin: 0 auto;
+
+  max-width: $l-max-page-width;
+}
