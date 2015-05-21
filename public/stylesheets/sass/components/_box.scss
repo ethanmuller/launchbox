@@ -1,5 +1,91 @@
 .box {
+  // prevent first link from being
+  // pulled up out of parent
+  padding-top: $l-border;
+
+  // this pulls boxes into page gutter when space
+  // is very valuable
+  margin-left: -($l-page-gutter + $l-border);
+  margin-right: -($l-page-gutter + $l-border);
+
+  @media (min-width: $mq-remove-box-cancel) {
+    // we have more space here, so we can cancel
+    // the "pulling into margin" business
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
-.box--link {
+.box__item {
+  position: relative;
+}
+
+.box__title {
+  color: $c-primary;
+  font-size: ms(1);
+  font-weight: bold;
+}
+
+.box__url {
+  color: $c-tertiary;
+}
+
+.box__link {
+  display: block;
+  border: $l-border solid $c-primary;
+
+  // magic number, first value is related to height of controls
+  padding: ms(2) ms();
+
+  // prevent border overlap
+  margin-top: -($l-border);
+
+  &:focus,
+  &:hover {
+    // using transparentize or else the selected color is a little
+    // too much
+    background-color: transparentize($c-bg--selected, 0.75);
+  }
+}
+
+.box__controls {
+  position: absolute;
+  top: ($l-border * 2);
+  bottom: $l-border;
+  right: $l-border;
+
+  overflow: hidden;
+}
+
+.box__controls__inner {
+  transform: translate(100%, 0);
+  transition: transform 0.25s;
+
+  .box__item:hover & {
+    transform: translate($l-border, 0);
+
+    // only delay when hovered
+    transition-delay: 0.25s;
+  }
+}
+
+.box__control {
+}
+
+.box__edit {
+  float: right;
+  margin-left: -($l-border--sm);
+
+  &:focus,
+  &:hover {
+    // since borders are overlapping,
+    // this raises element on focus/hover,
+    // preventing preceding element from covering
+    // up the changed border color
+    position: relative;
+  }
+}
+
+.box__delete {
+  float: left;
 }

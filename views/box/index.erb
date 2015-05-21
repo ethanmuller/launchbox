@@ -2,16 +2,32 @@
   <% if @box.links.any? %>
     <ul class="box">
       <% @box.links.each do |link| %>
-        <li class="box--link">
+        <li class="box__item">
   
-          <a href="<%= link.url %>"><%= link.name %></a>
+          <a href="<%= link.url %>" class="box__link">
+
+            <div class="box__title">
+              <%= link.name %>
+            </div>
+
+            <div class="box__url">
+              <%= link.url %>
+            </div>
+
+          </a>
   
-          <a href="/box/links/<%= link.id %>">Edit</a>
-  
-          <form method="post" action="/box/links/<%= link.id %>">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="destroy" >
-          </form>
+          <div class="box__controls">
+            <div class="box__controls__inner">
+
+              <a href="/box/links/<%= link.id %>" class="btn btn--inline btn--sm btn--secondary box__control box__edit">Edit</a>
+              
+              <form class="u-inline" method="post" action="/box/links/<%= link.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" value="Delete" class="btn btn--inline btn--sm btn--secondary box__control box__delete">
+              </form>
+
+            </div>
+          </div>
   
         </li>
       <% end %>
@@ -23,4 +39,6 @@
   <% end %>
 </div>
 
-<a href="/box/links/create" class="btn btn--inline">Add Link</a>
+<div class="sp--lg u-align-right">
+  <a href="/box/links/create" class="btn btn--primary btn--inline">Add Link</a>
+</div>

@@ -34,8 +34,14 @@
 
 .l-limit {
   // limit page width
-  padding: 0 1em;
+  padding: 0 $l-page-gutter;
   margin: 0 auto;
 
+  // sometimes, we pull elements out of .l-limit with negative margins. This
+  // prevents the page from scrolling horizontally when we do that.
+  overflow: hidden;
+
   max-width: $l-max-page-width;
+
+
 }

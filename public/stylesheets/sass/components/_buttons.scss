@@ -1,17 +1,78 @@
 .btn {
   display: block;
-  padding: 1em;
+  padding: 1em 1.3em;
 
-  background-color: $c-primary;
-  color: $c-secondary;
+  cursor: pointer;
 
-  /* font-size: 1.25em; */
+  font-size: ms();
   font-weight: bold;
+
+  border-style: solid;
+  border-width: $l-border;
 
   text-transform: uppercase;
   text-align: center;
+
+  // remove default button/input styles
+  -webkit-appearance: none;
+  border-radius: 0;
+  margin: 0;
+  font-family: $default-font-stack;
+  background-color: transparent;
+  box-sizing: content-box;
+  line-height: 1.2;
 }
+
+.btn--primary {
+  background-color: $c-primary;
+  color: $c-bg;
+  border-color: transparent;
+
+  &:focus,
+  &:hover {
+    color: $c-secondary;
+    border-color: $c-secondary;
+
+    outline: none;
+  }
+}
+
+.btn--secondary {
+  background-color: $c-bg;
+  color: $c-primary;
+
+  border: $l-border solid $c-primary;
+
+  &:focus,
+  &:hover {
+    background-color: $c-bg--selected;
+
+    outline: none;
+  }
+}
+
+.btn--subtle {
+  background-color: transparent;
+  color: $c-primary;
+
+  border: $l-border solid transparent;
+
+  &:focus,
+  &:hover {
+    border-color: $c-primary;
+
+    outline: none;
+  }
+}
+
 
 .btn--inline {
   display: inline-block;
+}
+
+.btn--sm {
+  font-size: ms() * 0.8;
+  padding: 8px 10px;
+
+  border-width: $l-border--sm !important;
 }
