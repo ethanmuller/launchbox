@@ -6,4 +6,5 @@
 .callout--empty {
   padding: ms();
   border: $l-border solid $c-secondary;
+  margin: (ms(3) - $l-header-margin) 0 ms(3);
 }

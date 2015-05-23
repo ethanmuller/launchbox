@@ -1,3 +1,6 @@
+// a .box is a list of links.
+// a .box__link is one of those links. Big, chunky, clickable.
+
 .box {
   // prevent first link from being
   // pulled up out of parent
@@ -17,17 +20,55 @@
 }
 
 .box__item {
+  // contain pseudo-elements
   position: relative;
+
+  &:before {
+    // fade for overflowing content
+    content: '';
+    background: linear-gradient(to right, rgba($c-bg, 0), rgba($c-bg, 1) 50%);
+
+    // don't block clicks!
+    pointer-events: none;
+
+    position: absolute;
+    z-index: $zi-box-fade;
+
+    width: $l-fade-width;
+
+    top: $l-border;
+    right: $l-border;
+
+    // border width plus some extra room to try and not cover up scrollbars
+    bottom: $l-border + 30px;
+  }
 }
 
 .box__title {
   color: $c-primary;
   font-size: ms(1);
+  line-height: 1.2;
   font-weight: bold;
+
+  position: relative;
+  z-index: $zi-box-contents;
 }
 
 .box__url {
   color: $c-secondary;
+
+  position: relative;
+  z-index: $zi-box-contents;
+
+  white-space: pre;
+
+  &:after {
+    // for overflow, this adds a little space
+    // between the overflowing text and the
+    // far-right edge of the scrollable area
+    content: '';
+    padding-left: $l-fade-width;
+  }
 }
 
 .box__link {
@@ -39,13 +80,17 @@
 
   // prevent border overlap
   margin-top: -($l-border);
+
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .box__controls {
   position: absolute;
+  z-index: $zi-box-controls;
+
   top: ($l-border * 2);
   right: ($l-border * 2);
-  bottom: $l-border;
 
   overflow: hidden;
 }

@@ -1,11 +1,24 @@
-<form action="/box/links/create" method="post">
-  <label>
-    Name
-    <input type="text" name="link[name]">
-  </label>
-  <label>
-    URL
-    <input type="text" name="link[url]">
-  </label>
-  <input type="submit">
-</form>
+<div class="sp--lg--top">
+  <form action="/box/links/create" method="post">
+
+
+    <div class="sp--xl">
+      <label>
+        <span class="form-label">Name</span>
+        <input class="text-input" type="text" name="link[name]" value="<%= params[:name] %>" autofocus>
+      </label>
+    </div>
+
+    <div class="sp--xl">
+      <label>
+        <span class="form-label">URL</span>
+        <input class="text-input" type="text" name="link[url]" value="<%= params[:url] %>">
+      </label>
+    </div>
+
+    <div class="l-right">
+      <input type="submit" class="btn btn--primary">
+    </div>
+  </form>
+
+</div>

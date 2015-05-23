@@ -5,9 +5,18 @@ require 'tilt/erb'
 require './models/box.rb'
 require './models/link.rb'
 
+set :local_mode, true
+
 helpers do
   def get_or_make_box
-    @ip = request.ip
+    # If local mode is true, we don't need to worry about IPs.
+    # Everything goes into one big, comfy box.
+
+    if settings.local_mode
+      @ip = "local"
+    else
+      @ip = request.ip
+    end
 
     if Box.exists?(ip: @ip)
       return @box = Box.find_by(ip: @ip)
@@ -17,11 +26,30 @@ helpers do
       return @box
     end
   end
+
+  def quip
+    # print out a cute little quip
+    # for when there aren't any links
+    @quips = [
+      "This is awkward.",
+      "I feel so naked.",
+      "Feed me.",
+      "I thirst.",
+      "I'm so lonely.",
+      "I've got the rumblies. That only links can satisfy.",
+      "Fill me up, buttercup.",
+      "Hook me up."
+    ]
+
+    @quips[rand(@quips.length)]
+  end
 end
 
 get '/' do
   @box = get_or_make_box
   @box.links.order(created_at: :asc)
+
+  @box.links.inspect
 
   erb :'box/index'
 end

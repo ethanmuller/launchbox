@@ -12,13 +12,13 @@
   display: inline-block;
   vertical-align: middle;
 
-  margin-right: ms() * 0.5;
+  margin-right: 2px;
 
-  width: 32px;
+  width: 16px;
   height: 100%;
-  @media (min-width: $mq-grow-logo) {
-    width: 64px;
-    margin-right: ms();
+  @media #{$mq-grow-logo} {
+    width: 48px;
+    margin-right: 9px;
   }
 }
 
@@ -28,11 +28,9 @@
   font-weight: bold;
   text-transform: uppercase;
 
-  font-size: ms(1);
-  line-height: 1;
   letter-spacing: 0.02em;
 
-  @media (min-width: $mq-grow-logo) {
-    font-size: ms(2);
+  @media #{$mq-grow-logo} {
+    font-size: ms(1);
   }
 }

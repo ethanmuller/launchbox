@@ -13,6 +13,8 @@ $l-max-page-width: 50em;
 $l-border: 6px;
 $l-border--sm: 2px;
 $l-base-font-size: 18px;
+$l-fade-width: 30px;
+$l-header-margin: 12px;
 
 // should actually be ms(), but that's not defined yet
 $l-page-gutter: $l-base-font-size;
@@ -21,12 +23,24 @@ $l-page-gutter: $l-base-font-size;
 // media queries
 $mq-split-header: 34em;
 $mq-remove-box-cancel: 26.25em;
-$mq-grow-logo: $l-max-page-width;
+$mq-grow-logo: "(min-height: 400px) and (min-width: #{$l-max-page-width})";
 
 
 // vendor settings
 $ms-base: $l-base-font-size;
 $ms-ratio: $golden;
+
+
+// z-index scale
+$zi-1: 100;
+$zi-2: 200;
+$zi-3: 300;
+
+// z-index scale, applied
+$zi-box-contents: $zi-1;
+$zi-box-fade: $zi-2;
+$zi-box-controls: $zi-3;
+
 
 
 // other

@@ -1,17 +1,24 @@
-<form action="/box/links/<%= @link.id %>" method="post">
-  <input type="hidden" name="_method" value="put">
+<div class="sp--lg--top">
+  <form action="/box/links/<%= @link.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
 
-  <label>
-    Name
-    <input type="text" name="link[name]" value="<%= @link.name %>">
-  </label>
+    <div class="sp--xl">
+      <label>
+        <span class="form-label">Name</span>
+        <input class="text-input" type="text" name="link[name]" value="<%= @link.name %>">
+      </label>
+    </div>
 
-  <label>
-    URL
-    <input type="text" name="link[url]" value="<%= @link.url %>">
-  </label>
+    <div class="sp--xl">
+      <label>
+        <span class="form-label">URL</span>
+        <input class="text-input" type="text" name="link[url]" value="<%= @link.url %>">
+      </label>
+    </div>
 
-  <input type="submit">
- </form>
+    <div class="l-right">
+      <input type="submit" class="btn btn--primary">
+    </div>
+  </form>
 
- <p><a href="/">back</a></p>
+</div>

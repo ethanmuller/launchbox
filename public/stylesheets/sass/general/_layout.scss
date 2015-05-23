@@ -6,20 +6,20 @@
   float: right;
 }
 
+.l-block {
+  width: 100%;
+  float: left;
+}
+
 .l-header {
   width: 100%;
   float: left;
 
-  margin: 0.8em 0 ms(2);
+  margin: $l-header-margin 0;
 }
 
 .l-logo {
   float: left;
-  margin-bottom: ms();
-
-  @media (min-width: $mq-split-header) {
-    margin-bottom: 0;
-  }
 }
 
 .l-title {
@@ -34,7 +34,7 @@
     margin-top: 0.3em;
   }
 
-  @media (min-width: $mq-grow-logo) {
+  @media #{$mq-grow-logo} {
     margin-top: 1.4em;
   }
 }
