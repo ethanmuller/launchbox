@@ -1,7 +1,7 @@
 <div class="sp">
-  <% if @box.links.any? %>
+  <% if @links.any? %>
     <ul class="box">
-      <% @box.links.each do |link| %>
+      <% @links.each do |link| %>
         <li class="box__item">
   
           <a href="<%= link.url %>" class="box__link">

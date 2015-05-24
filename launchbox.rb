@@ -46,10 +46,8 @@ helpers do
 end
 
 get '/' do
-  @box = get_or_make_box
-  @box.links.order(created_at: :asc)
-
-  @box.links.inspect
+  box = get_or_make_box
+  @links = box.links.order(created_at: :desc)
 
   erb :'box/index'
 end
