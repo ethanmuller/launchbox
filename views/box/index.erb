@@ -32,14 +32,19 @@
       <% end %>
     </ul>
   <% else %>
-    <div class="callout--empty u-align-center c-secondary">
-      <p><strong>No links added yet.</strong></p>
-      <p><%= quip %></p>
+    <div class="empty-message">
+      <div class="u-align-center c-secondary">
+        <div class="callout callout--subtle sp">
+          <p><strong>No links added yet.</strong></p>
+          <p><%= quip %></p>
+        </div>
+        <strong>Hint:</strong> Expecting something? Make sure you're on the same network as when you added them.
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="sp--xl l-block">
+<div class="sp--lg l-block">
   <div class="l-right">
     <a href="/box/links/create" class="btn btn--primary btn--inline">Add Link</a>
   </div>

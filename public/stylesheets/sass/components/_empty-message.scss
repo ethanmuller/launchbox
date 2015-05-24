@@ -1,0 +1,6 @@
+.empty-message {
+  // container for message when box is empty.
+  // This is weirdly specific styling,
+  // so it deserves its own class name
+  margin: (ms(2) - $l-header-margin) 0 ms(2);
+}
