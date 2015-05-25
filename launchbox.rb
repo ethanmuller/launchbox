@@ -1,11 +1,15 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'tilt/erb'
+require 'rack-flash'
 
 require './models/box.rb'
 require './models/link.rb'
 
 set :local_mode, true
+
+enable :sessions
+use Rack::Flash
 
 helpers do
   def get_or_make_box
@@ -21,8 +25,7 @@ helpers do
     if Box.exists?(ip: @ip)
       return @box = Box.find_by(ip: @ip)
     else
-      @box = Box.new(ip: @ip)
-      @box.save
+      @box = Box.create(ip: @ip)
       return @box
     end
   end
@@ -52,16 +55,16 @@ get '/' do
   erb :'box/index'
 end
 
-get '/get-ip' do
-  erb :'get-ip'
-end
-
 get '/what-is-this-even' do
   erb :'description', :layout => :'layout_naked'
 end
 
 get '/box/links/create' do
   @box = get_or_make_box
+  @link = @box.links.new
+
+  @link.name = params[:name]
+  @link.url = params[:url]
 
   erb :'links/create'
 end
@@ -73,6 +76,8 @@ post '/box/links/create' do
 
   if @link.save
     redirect to("/")
+  else
+    erb :'links/create'
   end
 end
 

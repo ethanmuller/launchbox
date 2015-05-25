@@ -1,19 +1,46 @@
 <div class="sp--lg--top">
-  <form action="/box/links/create" method="post">
+  <form action="/box/links/create" method="post" novalidate>
 
 
     <div class="sp--xl">
       <label>
         <span class="form-label">Name</span>
-        <input class="text-input" type="text" name="link[name]" value="<%= params[:name] %>" autofocus>
+        <input class="text-input <%= "text-input--error" if @link.errors[:name].any? %>"
+               type="text"
+               name="link[name]"
+               value="<%= @link.name %>"
+               aria-describedby="name-error"
+               required
+               autofocus>
       </label>
+
+      <% if @link.errors[:name].any? %>
+        <div id="name-error" class="callout callout--negative sp--top">
+          <%# if any validations other than presence are added, this message will need to be dynamic %>
+          <strong>Please enter a name for your link.</strong>
+        </div>
+      <% end %>
+
     </div>
 
     <div class="sp--xl">
       <label>
         <span class="form-label">URL</span>
-        <input class="text-input" type="text" name="link[url]" value="<%= params[:url] %>">
+        <input class="text-input <%= "text-input--error" if @link.errors[:url].any? %>"
+               type="url"
+               name="link[url]"
+               aria-describedby="url-error"
+               required
+               value="<%= @link.url %>">
       </label>
+
+      <% if @link.errors[:url].any? %>
+        <div id="url-error" class="callout callout--negative sp--top">
+          <%# if any validations other than presence are added, this message will need to be dynamic %>
+          <strong>Please enter a URL for your link.</strong>
+        </div>
+      <% end %>
+
     </div>
 
     <div class="l-right">

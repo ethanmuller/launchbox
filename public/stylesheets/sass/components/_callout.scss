@@ -7,3 +7,8 @@
   // OXYMORON, RITE? LOL
   border-color: $c-secondary;
 }
+
+.callout--negative {
+  border-color: $c-negative;
+  color: $c-negative;
+}

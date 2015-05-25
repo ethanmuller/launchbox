@@ -3,6 +3,10 @@ $c-bg: #e1e1e1;
 $c-primary: #6B2607;
 $c-secondary: #949494;
 
+// semantic colors
+$c-negative: rgb(216, 0, 0);
+$c-negative-bg: lighten( desaturate( $c-negative, 18 ), 47 );
+
 // $c-bg: #3977B3;
 // $c-primary: white;
 // $c-secondary: rgba(white, 0.6);
