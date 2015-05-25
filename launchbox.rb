@@ -1,15 +1,11 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'tilt/erb'
-require 'rack-flash'
 
 require './models/box.rb'
 require './models/link.rb'
 
 set :local_mode, true
-
-enable :sessions
-use Rack::Flash
 
 helpers do
   def get_or_make_box
