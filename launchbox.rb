@@ -42,6 +42,17 @@ helpers do
 
     @quips[rand(@quips.length)]
   end
+
+  def absolute_url(url)
+    # Take a URL, and if it doesn't look absolute, prepend "http://"
+    # Yeah, yeah, this belongs in a link controller. Shut up.
+
+    if url !~ /^[(http:\/\/)(https:\/\/)(\/\/)(javascript:)]/
+      "http://" + url
+    else
+      url
+    end
+  end
 end
 
 get '/' do

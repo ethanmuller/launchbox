@@ -4,7 +4,7 @@
       <% @links.each do |link| %>
         <li class="box__item">
   
-          <a href="<%= link.url %>" class="box__link">
+          <a href="<%= absolute_url(link.url) %>" class="box__link">
 
             <div class="box__title">
               <%= link.name %>
