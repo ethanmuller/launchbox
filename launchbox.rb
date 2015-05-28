@@ -1,11 +1,12 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'tilt/erb'
+require 'uri'
 
 require './models/box.rb'
 require './models/link.rb'
 
-set :local_mode, true
+set :local_mode, false
 
 helpers do
   def get_or_make_box
@@ -48,10 +49,12 @@ helpers do
     # Yeah, yeah, this belongs in a link controller. Shut up.
 
     if url !~ /^[(http:\/\/)(https:\/\/)(\/\/)(javascript:)]/
-      "http://" + url
+      result = "http://" + url
     else
-      url
+      result = url
     end
+
+    URI.encode(result)
   end
 end
 
@@ -98,8 +101,10 @@ end
 
 delete '/box/links/:id' do
   @box = get_or_make_box
-  @link = @box.links.find(params[:id])
-  if @link.destroy
+  begin
+    @link = @box.links.find(params[:id])
+    @link.destroy
+  ensure
     redirect to("/")
   end
 end

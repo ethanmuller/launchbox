@@ -27,12 +27,10 @@
           <span class="main-logo--text">Launchbox</span>
         </a>
       </div>
-      
-      <% unless settings.local_mode %>
-        <div class="l-title">
-          <h1 class="box-title"><%= @box.ip %></h1>
-        </div>
-      <% end %>
+
+      <div class="u-align-center l-help-link">
+        <a href="/what-is-this-even" class="btn btn--secret btn--sm">?</a>
+      </div>
     </div>
     
     <div class="l-main">

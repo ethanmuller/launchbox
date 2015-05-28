@@ -22,20 +22,14 @@
   float: left;
 }
 
-.l-title {
-  float: left;
-  clear: both;
+.l-help-link {
+  float: right;
 
-  @media (min-width: $mq-split-header) {
-    float: right;
-    clear: none;
-
-    // magic number, related to logo size
-    margin-top: 0.3em;
-  }
+  // magic number, related to logo size
+  margin-top: -0.1em;
 
   @media #{$mq-grow-logo} {
-    margin-top: 1.4em;
+    margin-top: 0.3em;
   }
 }
 

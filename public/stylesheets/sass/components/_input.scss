@@ -1,13 +1,22 @@
 .text-input {
   background-color: transparent;
 
+  // remove iOS input styling
+  -webkit-appearance: none;
+  border-radius: 0;
+
   display: block;
 
   box-sizing: border-box;
   width: 100%;
   padding: $l-border;
 
-  font-size: ms(2);
+  font-size: ms(1);
+
+  @media (min-width: 685px) {
+    font-size: ms(2);
+  }
+
   font-weight: bold;
 
   color: $c-primary;

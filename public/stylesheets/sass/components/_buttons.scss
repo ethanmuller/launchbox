@@ -62,18 +62,6 @@
   border: $l-border solid transparent;
 
   position: relative;
-  &:before {
-    content: '';
-    position: absolute;
-
-    bottom: 0.8em;
-
-    left: 1.3em;
-    right: 1.3em;
-
-    background-color: $c-secondary;
-    height: $l-border--sm;
-  }
 
   &:focus,
   &:hover {
