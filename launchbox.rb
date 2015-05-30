@@ -23,6 +23,13 @@ helpers do
       return @box = Box.find_by(ip: @ip)
     else
       @box = Box.create(ip: @ip)
+
+      # initialize with a link
+      @link = @box.links.new
+      @link.name = "What is this?"
+      @link.url = "/what-is-this-even"
+      @link.save
+
       return @box
     end
   end
