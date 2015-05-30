@@ -9,6 +9,7 @@
                type="text"
                name="link[name]"
                value="<%= @link.name %>"
+               placeholder="Lauren's IP Address"
                aria-describedby="name-error"
                required
                autofocus>
@@ -29,6 +30,7 @@
         <input class="text-input <%= "text-input--error" if @link.errors[:url].any? %>"
                type="url"
                name="link[url]"
+               placeholder="192.168.0.5"
                aria-describedby="url-error"
                required
                value="<%= @link.url %>">

@@ -1,8 +1,8 @@
 <form action="/edit" method="post">
   <% @box.links.each do |link| %>
     <div>
-      <input class="text-input" type="text" name="boxlinks[<%= link.id  %>][name]" value="<%= link.name %>" autofocus>
-      <input class="text-input" type="text" name="boxlinks[<%= link.id  %>][url]" value="<%= link.url %>">
+      <input class="text-input" type="text" placeholder="Lauren's IP Address" name="boxlinks[<%= link.id  %>][name]" value="<%= link.name %>" autofocus>
+      <input class="text-input" type="text" placeholder="192.168.0.5" name="boxlinks[<%= link.id  %>][url]" value="<%= link.url %>">
       <br />
     </div>
   <% end %>
