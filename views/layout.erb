@@ -6,6 +6,7 @@
 
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
+  <script src="/scripts/modernizr.min.js"></script>
   <link rel="stylesheet" href="/stylesheets/styles.css">
 
   <!-- for metro tiles -->
@@ -23,8 +24,12 @@
     <div class="l-header">
       <div class="l-logo">
         <a href="/" class="main-logo">
-          <svg class="main-logo--graphic" xmlns="http://www.w3.org/2000/svg" width="64" height="60" viewBox="0 0 64 60"><title>Launchbox Logo</title><path id="launchbox-logo-lines" fill="#6B2607" fill-rule="evenodd" d="M0,0 H64 V60 H0 V0   M6,6 h52 v12 h-52 v-12 z   M6,24 h52 v12 h-52 v-12 z   M6,42 h52 v12 h-52 v-12 z"/></svg>
-          <span class="main-logo--text">Launchbox</span>
+          <div class="main-logo__graphic-wrapper">
+            <div class="main-logo__graphic">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="60" viewBox="0 0 64 60"><title>Launchbox Logo</title><path id="launchbox-logo-lines" fill="#6B2607" fill-rule="evenodd" d="M0,0 H64 V60 H0 V0   M6,6 h52 v12 h-52 v-12 z   M6,24 h52 v12 h-52 v-12 z   M6,42 h52 v12 h-52 v-12 z"/></svg>
+            </div>
+          </div>
+          <span class="main-logo__text">Launchbox</span>
         </a>
       </div>
 
