@@ -54,7 +54,7 @@ helpers do
       result = url
     end
 
-    result
+    result.gsub('"', '&quot;')
   end
 end
 
