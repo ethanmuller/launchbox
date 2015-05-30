@@ -6,17 +6,17 @@ require 'uri'
 require './models/box.rb'
 require './models/link.rb'
 
-set :local_mode, false
+set :public_mode, true
 
 helpers do
   def get_or_make_box
-    # If local mode is true, we don't need to worry about IPs.
+    # If public_mode is false, we don't need to worry about IPs.
     # Everything goes into one big, comfy box.
 
-    if settings.local_mode
-      @ip = "local"
-    else
+    if settings.public_mode
       @ip = request.ip
+    else
+      @ip = "local"
     end
 
     if Box.exists?(ip: @ip)
@@ -54,7 +54,7 @@ helpers do
       result = url
     end
 
-    URI.encode(result)
+    result
   end
 end
 

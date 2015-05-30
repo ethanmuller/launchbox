@@ -31,6 +31,12 @@
         </li>
       <% end %>
     </ul>
+
+    <% if settings.public_mode %>
+      <div class="c-secondary">
+        <strong><%= @ip %></strong>
+      </div>
+    <% end %>
   <% else %>
     <div class="empty-message">
       <div class="u-align-center c-secondary">
@@ -38,8 +44,15 @@
           <p><strong>No links added yet.</strong></p>
           <p><%= quip %></p>
         </div>
-        <strong>Hint:</strong> Expecting links? Make sure you're on the same network as when you added them.
       </div>
+
+      <% if settings.public_mode %>
+        <div class="c-secondary">
+          <strong>Expecting to see links?</strong>
+          Make sure you're accessing them from the same network you added them from.
+          Your external IP address is <strong><%= @ip %></strong>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>

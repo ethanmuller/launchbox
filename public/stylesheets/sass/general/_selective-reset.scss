@@ -7,6 +7,10 @@ ul, ol {
   padding: 0;
 }
 
+html {
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
+}
+
 body {
   font-size: ms();
   line-height: 1.6;
