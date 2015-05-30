@@ -48,7 +48,7 @@ helpers do
     # Take a URL, and if it doesn't look absolute, prepend "http://"
     # Yeah, yeah, this belongs in a link controller. Shut up.
 
-    if url !~ /^[(http:\/\/)(https:\/\/)(\/\/)(javascript:)]/
+    if url !~ /^[(http:\/\/)(https:\/\/)(\/)(javascript:)]/
       result = "http://" + url
     else
       result = url
