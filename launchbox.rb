@@ -6,13 +6,13 @@ require 'uri'
 require './models/box.rb'
 require './models/link.rb'
 
-set :public_mode, true
+# if public mode is true,
+# separate boxes will be created for each IP address that hits the app.
+# Otherwise, there is no separation between links.
+set :public_mode, ENV['PUBLIC_MODE'] || false
 
 helpers do
   def get_or_make_box
-    # If public_mode is false, we don't need to worry about IPs.
-    # Everything goes into one big, comfy box.
-
     if settings.public_mode
       @ip = request.ip
     else
