@@ -3,6 +3,8 @@ require 'sinatra/activerecord'
 require 'tilt/erb'
 require 'uri'
 
+require './layout_helpers.rb'
+
 require './models/box.rb'
 require './models/link.rb'
 
@@ -69,11 +71,11 @@ get '/' do
   box = get_or_make_box
   @links = box.links.order(created_at: :desc)
 
-  erb :'box/index'
+  standard_layout :'box/index'
 end
 
 get '/what-is-this-even' do
-  erb :'description', :layout => :'layout_naked'
+  skinny_layout :description
 end
 
 get '/box/links/create' do
@@ -83,7 +85,7 @@ get '/box/links/create' do
   @link.name = params[:name]
   @link.url = params[:url]
 
-  erb :'links/create'
+  standard_layout :'links/create'
 end
 
 post '/box/links/create' do
@@ -94,7 +96,7 @@ post '/box/links/create' do
   if @link.save
     redirect to("/")
   else
-    erb :'links/create'
+    standard_layout :'links/create'
   end
 end
 
@@ -103,7 +105,7 @@ get '/box/links/:id' do
   @box = get_or_make_box
   @link = @box.links.find(params[:id])
 
-  erb :'links/show'
+  standard_layout :'links/show'
 end
 
 delete '/box/links/:id' do
