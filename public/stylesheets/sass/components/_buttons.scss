@@ -6,7 +6,7 @@
 
   font-size: 14px;
 
-  @media (min-width: 430px) {
+  @include safe-mq("(min-width: 430px)") {
     font-size: ms();
   }
 

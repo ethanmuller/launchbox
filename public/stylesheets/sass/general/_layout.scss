@@ -28,7 +28,7 @@
   // magic number, related to logo size
   margin-top: -0.1em;
 
-  @media #{$mq-grow-logo} {
+  @include safe-mq($mq-grow-logo) {
     margin-top: 0.3em;
   }
 }

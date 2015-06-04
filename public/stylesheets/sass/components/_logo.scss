@@ -9,7 +9,7 @@
   margin-right: 2px;
 
   width: 16px;
-  @media #{$mq-grow-logo} {
+  @include safe-mq($mq-grow-logo) {
     width: 48px;
     margin-right: 9px;
   }
@@ -45,7 +45,7 @@
 
   letter-spacing: 0.02em;
 
-  @media #{$mq-grow-logo} {
+  @include safe-mq($mq-grow-logo) {
     font-size: ms(1);
   }
 }

@@ -4,3 +4,17 @@
   #{$key}: strip-unit( $val );
   #{$key}: ( strip-unit( $val ) / $l-base-font-size) * 1rem;
 }
+
+@mixin safe-mq($query) {
+  // Output @content if a no-mq stylesheet is being
+  // generated.
+  $no-mq-support: false !default;
+
+  @if $no-mq-support{
+    @content;
+  } @else {
+    @media #{$query} {
+      @content;
+    }
+  }
+}

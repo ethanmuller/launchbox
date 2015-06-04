@@ -11,7 +11,7 @@
   margin-left: -($l-page-gutter + $l-border);
   margin-right: -($l-page-gutter + $l-border);
 
-  @media (min-width: $mq-remove-box-cancel) {
+  @include safe-mq("(min-width: #{$mq-remove-box-cancel})") {
     // we have more space here, so we can cancel
     // the "pulling into margin" business
     margin-left: 0;
