@@ -1,3 +1,5 @@
+$highlight-selector: "&:focus, .no-touch &:hover";
+
 .btn {
   display: block;
   padding: 1em 1.3em;
@@ -33,8 +35,7 @@
   color: $c-bg;
   border-color: transparent;
 
-  &:focus,
-  &:hover {
+  #{$highlight-selector} {
     color: white;
     background-color: darken($c-primary, 10%);
 
@@ -48,8 +49,7 @@
 
   border: $l-border solid $c-primary;
 
-  &:focus,
-  &:hover {
+  #{$highlight-selector} {
     background-color: white;
 
     outline: none;
@@ -63,8 +63,7 @@
 
   position: relative;
 
-  &:focus,
-  &:hover {
+  #{$highlight-selector} {
     border-color: $c-secondary;
 
     outline: none;

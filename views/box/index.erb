@@ -1,9 +1,16 @@
-<div class="sp">
+<% if @links.any? %>
+  <div class="l-edit-mode">
+    <button class="u-js-dependent edit-mode-trigger btn btn--secondary btn--inline btn--sm" id="edit-trigger" aria-checked="false">Edit</button>
+  </div>
+<% end %>
+
+<div class="sp l-block">
   <% if @links.any? %>
-    <ul class="box">
+    <ul class="box" id="box-list">
       <% @links.each do |link| %>
         <li class="box__item">
-  
+          <div class="box__handle" aria-label="drag to rearrange"></div>
+
           <a href="<%= absolute_url(link.url) %>" class="box__link">
 
             <div class="box__title">
@@ -18,6 +25,7 @@
           <div class="box__controls">
             <div class="box__controls__inner">
 
+
               <a href="/box/links/<%= link.id %>" class="btn btn--inline btn--sm btn--secondary box__control box__edit">Edit</a>
               
               <form class="u-inline" method="post" action="/box/links/<%= link.id %>">
@@ -31,33 +39,27 @@
         </li>
       <% end %>
     </ul>
-
-    <% if settings.public_mode %>
-      <div class="c-secondary">
-        <strong><%= @ip %></strong>
-      </div>
-    <% end %>
   <% else %>
-    <div class="empty-message">
-      <div class="u-align-center c-secondary">
-        <div class="callout callout--subtle sp">
-          <p><strong>No links added yet.</strong></p>
-          <p><%= quip %></p>
-        </div>
+    <div class="u-align-center c-secondary">
+      <div class="callout callout--subtle sp">
+        <p><strong>No links added yet.</strong></p>
+        <p><%= quip %></p>
       </div>
+    </div>
 
+    <div class="c-secondary">
+      <strong>Expecting to see links?</strong>
       <% if settings.public_mode %>
-        <div class="c-secondary">
-          <strong>Expecting to see links?</strong>
-          Make sure you're accessing them from the same network you added them from.
-          Your external IP address is <strong><%= @ip %></strong>
-        </div>
+        Make sure you're accessing them from the same network you added them from.
+        Your external IP address is <strong><%= @ip %></strong>
+      <% else %>
+        This instance of Launchbox is running locally. Did you mean to go to <a href="http://launchbox.io" class="link">launchbox.io</a>?
       <% end %>
     </div>
   <% end %>
 </div>
 
-<div class="sp--lg l-block">
+<div class="sp--xxl l-block">
   <div class="l-right">
     <a href="/box/links/create" class="btn btn--primary btn--inline">Add Link</a>
   </div>

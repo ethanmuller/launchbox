@@ -1,0 +1,29 @@
+// styles for edit mode checkbox and label
+
+.edit-mode-trigger {
+  // if this is ever reused, it should be a kind of .btn
+
+  &:before {
+    content: '';
+    width: ms();
+    height: ms();
+
+    display: inline-block;
+    vertical-align: middle;
+
+    border: $l-border--sm solid $c-primary;
+
+    margin-right: 0.5em;
+
+    // this feels brittle
+    line-height: 0.8;
+
+    box-shadow: inset 0 0 0 0 white;
+  }
+
+  &[aria-checked='true']:before {
+    // this makes it look like a lil' square is drawn in the middle
+    box-shadow: inset 0 0 0 5px white;
+    background: $c-primary;
+  }
+}

@@ -12,10 +12,18 @@
 }
 
 .l-header {
-  width: 100%;
   float: left;
 
   margin: $l-header-margin 0;
+}
+
+.l-edit-mode {
+  float: right;
+  margin: 0.5em 0;
+
+  @include safe-mq($mq-grow-logo) {
+    margin: 0.9em 0;
+  }
 }
 
 .l-logo {
@@ -33,12 +41,6 @@
   }
 }
 
-.l-main {
-  width: 100%;
-  float: left;
-  clear: both;
-}
-
 .l-limit {
   // limit page width
   padding: 0 $l-page-gutter;
@@ -51,4 +53,8 @@
   max-width: $l-max-page-width;
 
 
+}
+
+.l-screen-height {
+  min-height: 100vh;
 }

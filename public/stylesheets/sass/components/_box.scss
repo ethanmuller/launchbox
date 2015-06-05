@@ -1,6 +1,12 @@
 // a .box is a list of links.
 // a .box__link is one of those links. Big, chunky, clickable.
 
+// Use this to select items contained in .box when
+// edit mode is happening.
+$edit-mode-selector: ".box--is-in-edit-mode &";
+
+$edit-mode-reveal-time: 0.2s;
+
 .box {
   // prevent first link from being
   // pulled up out of parent
@@ -26,7 +32,10 @@
   &:before {
     // fade for overflowing content
     content: '';
-    background: linear-gradient(to right, rgba($c-bg, 0), rgba($c-bg, 1) 50%);
+    width: $l-fade-width--edit-mode;
+    background-image: linear-gradient(to right, rgba($c-bg, 0), rgba($c-bg, 1) $l-fade-width);
+    background-position: ($l-fade-width--edit-mode - $l-fade-width) 0;
+    background-repeat: no-repeat;
 
     // don't block clicks!
     pointer-events: none;
@@ -34,24 +43,47 @@
     position: absolute;
     z-index: $zi-box-fade;
 
-    width: $l-fade-width;
-
     top: $l-border;
     right: $l-border;
 
     // border width plus some extra room to try and not cover up scrollbars
-    bottom: $l-border + 30px;
+    bottom: $l-border + 20;
+
+    transition: background-position 100ms 100ms ease-in;
+
+    #{$edit-mode-selector} {
+      transition: background-position 100ms ease-out;
+
+      // magic number, based on width of controls
+      background-position: 0em 0;
+    }
   }
 }
 
 .box__title {
   color: $c-primary;
-  font-size: ms(1);
+  font-size: ms() * 1.3;
   line-height: 1.2;
   font-weight: bold;
 
   position: relative;
   z-index: $zi-box-contents;
+
+  @include safe-mq("(min-width: 550px)") {
+    font-size: ms(1);
+  }
+
+  -webkit-transform: translate3d(0px, 0, 0);
+  transition: all 200ms $tf-ease-in-back;
+
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+
+  #{$edit-mode-selector} {
+    // shift over for handle
+    -webkit-transform: translate3d($l-handle-width, 0, 0);
+    transition: all 300ms $tf-ease-out-back--big;
+  }
 }
 
 .box__url {
@@ -60,7 +92,7 @@
   position: relative;
   z-index: $zi-box-contents;
 
-  white-space: pre;
+  white-space: nowrap;
 
   &:after {
     // for overflow, this adds a little space
@@ -68,6 +100,21 @@
     // far-right edge of the scrollable area
     content: '';
     padding-left: $l-fade-width;
+    #{$edit-mode-selector} {
+      padding-left: $l-fade-width--edit-mode;
+    }
+  }
+
+  -webkit-transform: translate3d(0px, 0, 0);
+  transition: all 200ms $tf-ease-in-back;
+
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+
+  #{$edit-mode-selector} {
+    // shift over for handle
+    -webkit-transform: translate3d($l-handle-width, 0, 0);
+    transition: all 300ms $tf-ease-out-back--big;
   }
 }
 
@@ -75,8 +122,22 @@
   display: block;
   border: $l-border solid $c-primary;
 
-  // magic number, first value is related to height of controls
-  padding: ms(2) ms();
+  padding: ms();
+
+  /* transition: all 200ms $tf-ease-in-back; */
+
+  #{$edit-mode-selector} {
+    /* transition: all 300ms $tf-ease-out-back--big; */
+
+    /* padding-left: (ms(1) * 1.5); */
+  }
+
+  .no-js & {
+    // in cases without JS,
+    // controls are positioned up top,
+    // so we need to make some extra space for them to live in
+    padding: ms(2) ms();
+  }
 
   // prevent border overlap
   margin-top: -($l-border);
@@ -85,26 +146,103 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.box__handle {
+  position: absolute;
+  z-index: $zi-box-handle;
+
+  width: $l-handle-width;
+  background: $c-secondary;
+
+  left: $l-border;
+  top: $l-border;
+  bottom: $l-border;
+
+  cursor: move;
+
+  visibility: hidden;
+
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+
+  transition: all 200ms $tf-ease-in-back;
+
+  #{$edit-mode-selector} {
+    transition: all 300ms $tf-ease-out-back--big;
+
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+
+    visibility: visible;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    height: 4px;
+    width: 4px;
+    margin-top: -2px;
+    margin-left: -2px;
+
+    border-radius: ms();
+
+    background: $c-bg;
+
+    box-shadow: 0 -6px 0 $c-bg, 0 6px 0 $c-bg;
+  }
+}
+
 .box__controls {
   position: absolute;
   z-index: $zi-box-controls;
 
-  top: ($l-border * 2);
-  right: ($l-border * 2);
+  top: 50%;
+  // magic number, related to controls height
+  margin-top: -1.125em;
+
+  .no-js & {
+    top: ($l-border * 2);
+    margin-top: 0;
+  }
+
+  right: $l-border;
+  // magic number, gives controls room to bounce in
+  padding-left: ($l-border * 4);
 
   overflow: hidden;
+
+  visibility: hidden;
+
+  #{$edit-mode-selector},
+  .no-js & {
+    visibility: visible;
+  }
 }
 
 .box__controls__inner {
-  /* transform: translate(100%, 0); */
-  /* transition: transform 0.25s; */
+  display: block;
 
-  /* .box__item:hover & { */
-    /* transform: translate(($l-border * 2), 0); */
+  position: relative;
+  left: -($l-border * 2);
 
-    /* // only delay when hovered */
-    /* transition-delay: 0.25s; */
-  /* } */
+  // eww, we need autoprefixer up in this
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+
+  transition: all 200ms $tf-ease-in-back;
+
+  #{$edit-mode-selector} {
+    transition: all 300ms $tf-ease-out-back;
+
+    -webkit-transform: translate3d(0%, 0, 0);
+    transform: translate3d(0%, 0, 0);
+  }
 }
 
 .box__control {
@@ -112,7 +250,6 @@
 
 .box__edit {
   float: right;
-  margin-left: -($l-border--sm);
 
   &:focus,
   &:hover {
@@ -126,4 +263,6 @@
 
 .box__delete {
   float: left;
+
+  margin-right: -($l-border--sm);
 }

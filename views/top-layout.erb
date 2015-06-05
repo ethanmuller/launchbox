@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <title>Launchbox</title>
@@ -27,6 +27,80 @@
 <body>
 
   <%= yield %>
+
+  <script>
+    /* yes, I'm just writing the scripts down in the footer. deal with it, butthead. */
+
+    function addEventListener(el, eventName, handler) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function(){
+          handler.call(el);
+        });
+      }
+    }
+
+    // This wrapper prevents variables
+    // from being placed on `window`
+    (function(){
+
+      // maybe a bad idea? Iunno.
+      // U for utilities
+      window.U = {};
+
+      window.U.toggleClass = function(el, className) {
+        if (el.classList) {
+          el.classList.toggle(className);
+        } else {
+          var classes = el.className.split(' ');
+            var existingIndex = -1;
+            for (var i = classes.length; i--;) {
+              if (classes[i] === className)
+                existingIndex = i;
+            }
+
+            if (existingIndex >= 0)
+              classes.splice(existingIndex, 1);
+            else
+              classes.push(className);
+
+          el.className = classes.join(' ');
+        }
+      };
+
+      window.U.toggleAttr = function(el, attr) {
+        var newState = !(el.getAttribute(attr) === 'true')
+        el.setAttribute(attr, newState);
+        return newState;
+      };
+
+      // maybe also a bad idea?
+      // caches reused dom elements
+      window.cache = {};
+
+      window.cache.editTrigger = document.getElementById('edit-trigger');
+      window.cache.boxList = document.getElementById('box-list');
+
+      addEventListener(window.cache.editTrigger, 'touchend', function(e){
+        e.preventDefault();
+
+        U.toggleAttr(window.cache.editTrigger, 'aria-checked');
+        U.toggleClass(window.cache.boxList, 'box--is-in-edit-mode');
+      });
+      addEventListener(window.cache.editTrigger, 'click', function(e){
+        U.toggleAttr(window.cache.editTrigger, 'aria-checked');
+        U.toggleClass(window.cache.boxList, 'box--is-in-edit-mode');
+      });
+      addEventListener(window.cache.editTrigger, 'mouseout', function(e){
+        // get rid of the blur leftover from clicking button element.
+        // is this bad for a11y?
+        this.blur()
+      });
+
+    })();
+
+  </script>
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
