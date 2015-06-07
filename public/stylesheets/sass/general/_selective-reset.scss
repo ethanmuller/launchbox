@@ -35,3 +35,8 @@ a {
 ul, ol {
   list-style: none;
 }
+
+input::-moz-focus-inner { 
+  border: 0; 
+  padding: 0; 
+}
