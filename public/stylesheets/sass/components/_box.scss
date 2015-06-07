@@ -3,7 +3,7 @@
 
 // Use this to select items contained in .box when
 // edit mode is happening.
-$edit-mode-selector: ".box--is-in-edit-mode &";
+$edit-mode-selector: ".no-js &, .box--is-in-edit-mode &";
 
 $edit-mode-reveal-time: 0.2s;
 
@@ -206,7 +206,7 @@ $edit-mode-reveal-time: 0.2s;
 
   top: 50%;
   // magic number, related to controls height
-  margin-top: -1.125em;
+  margin-top: -2.125em;
 
   .no-js & {
     top: ($l-border * 2);
@@ -214,8 +214,10 @@ $edit-mode-reveal-time: 0.2s;
   }
 
   right: $l-border;
-  // magic number, gives controls room to bounce in
-  padding-left: ($l-border * 4);
+  // magic number,
+  // gives controls room to bounce in,
+  // vertical padding prevents safari cutoff
+  padding: 1em 0 1em ($l-border * 6);
 
   overflow: hidden;
 
@@ -237,10 +239,17 @@ $edit-mode-reveal-time: 0.2s;
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 
-  transition: all 200ms $tf-ease-in-back;
+  .enable-transitions & {
+    // I was having trouble with some transitions triggering on
+    // initial page load. This wrapper keeps transitions from happening until
+    // JS adds `.enable-transitions` from the body.
+    transition: all 200ms $tf-ease-in-back;
+  }
 
   #{$edit-mode-selector} {
-    transition: all 300ms $tf-ease-out-back;
+    .enable-transitions & {
+      transition: all 300ms $tf-ease-out-back;
+    }
 
     -webkit-transform: translate3d(0%, 0, 0);
     transform: translate3d(0%, 0, 0);

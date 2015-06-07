@@ -33,11 +33,11 @@ $highlight-selector: "&:focus, .no-touch &:hover";
 .btn--primary {
   background-color: $c-primary;
   color: $c-bg;
-  border-color: transparent;
+  border-color: $c-primary;
 
   #{$highlight-selector} {
     color: white;
-    background-color: darken($c-primary, 10%);
+    background-color: lighten($c-primary, 10%);
 
     outline: none;
   }
